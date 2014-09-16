@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  # describe "Initialise and validate" do
+  #   it "creates a new user" do
+  #     user = User.new(user_name: "mr_cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
+  #     expect(user.user_name).to eq("mr_cat")
+  #   end
+  # end
+
 end
