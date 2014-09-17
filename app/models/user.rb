@@ -8,6 +8,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
-  attr_reader :user_name, :email
 
 end

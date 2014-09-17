@@ -6,9 +6,9 @@ require 'faker'
 end
 
 10.times do
-  Post.create!(content: Faker::Lorem.paragraph(3), user_id: rand(User.count) )
+  Post.create!(content: Faker::Lorem.paragraph(3), user_id: rand(User.count)+1 )
 end
 
 30.times do
-  Comment.create!(content: Faker::Lorem.paragraph(3), user_id: rand(User.count), post_id: rand(Post.count) )
+  Comment.create!(content: Faker::Lorem.paragraph(3), user_id: rand(User.count), post_id: rand(Post.count)+1 )
 end
