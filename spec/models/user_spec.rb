@@ -42,9 +42,9 @@ RSpec.describe User, :type => :model do
         expect(@user.valid?).to eq(false)
       end
 
-      it "rejects a new user with a long username (over 20 characters)" do
+      it "rejects a new user with a long username (over 30 characters)" do
         @user.valid?
-        expect(@user.errors.messages[:user_name]).to eq(["is too long (maximum is 20 characters)"])
+        expect(@user.errors.messages[:user_name]).to eq(["is too long (maximum is 30 characters)"])
       end
     end
 
