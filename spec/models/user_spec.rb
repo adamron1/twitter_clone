@@ -35,10 +35,10 @@ RSpec.describe User, :type => :model do
 
     describe "user_name too big" do
       before do
-        @user = User.new(user_name: "mr_really_big_and_strong_cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
+        @user = User.new(user_name: "mr_really_big_and_strong_cat_with_big_fat_whiskers", email: "puss@boots.com", password:"catsrule&dogsdrool")
       end
 
-      it "rejects a new user with a long username (over 20 characters)" do
+      it "rejects a new user with a long username (over 30 characters)" do
         expect(@user.valid?).to eq(false)
       end
 
