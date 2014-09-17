@@ -17,7 +17,7 @@ RSpec.describe User, :type => :model do
     end
 
     it "rejects a new user with a short password (DEVISE)" do
-      user = User.new(user_name: "mr_cat", email: "puss@boots.com", password:"cats")
+      git
       expect(user.valid?).to eq(false)
     end
 
