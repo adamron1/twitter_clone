@@ -1,0 +1,11 @@
+<div class="posts">
+  <% @posts.each do |post| %>
+    <div id="post-<%=post.id%>">
+      <%= post.content %>
+      <br/>
+      <p>Posted by <%= post.user %> on <%= post.created_at %></p>
+    </div>
+
+  <%end%>
+
+</div>
