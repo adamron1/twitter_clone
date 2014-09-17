@@ -1,9 +1,9 @@
 <div class="posts">
   <% @posts.each do |post| %>
-    <div id="post-<%=post.id%>">
+    <div class="post" id="post-<%=post.id%>">
       <%= post.content %>
       <br/>
-      <p>Posted by <%= post.user.user_name %> on <%= post.created_at %></p>
+      <p>Posted by <%= post.user.user_name %> <%= post.created_at.strftime("at %H:%M on %d/%m/%Y") %></p>
       <p><%= link_to "More", post %> </p>
 
     </div>
