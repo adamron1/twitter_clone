@@ -16,11 +16,6 @@ RSpec.describe User, :type => :model do
       expect(user.valid?).to eq(true)
     end
 
-    it "rejects a new user with a short password (DEVISE)" do
-      git
-      expect(user.valid?).to eq(false)
-    end
-
     describe "user_name too small:" do
       before do
         @user = User.new(user_name: "cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
