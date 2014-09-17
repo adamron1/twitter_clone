@@ -2,7 +2,7 @@
 
 
 <% if current_user %>
-<h3>Good to see you, <%= current_user.name %></h3>
+<h3>Good to see you, <%= current_user.user_name %></h3>
   <%= link_to "Check out the scene", posts_path %>
 <% else %>
   <h3>What do you wanna do?</h3>
