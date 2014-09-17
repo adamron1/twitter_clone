@@ -52,6 +52,24 @@ RSpec.describe User, :type => :model do
         expect(@user.errors.messages[:user_name]).to eq(["is too long (maximum is 20 characters)"])
       end
     end
+
+    describe "uniqueness" do
+
+      before do
+        @first_user = User.create(user_name: "mr_cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
+      end
+
+      it "only allows a unique user_name" do
+        copycat = User.new(user_name: "mr_cat", email: "pusspuss@boots.com", password:"catsrule&dogsdrool")
+        expect(copycat.valid?).to eq(false)
+      end
+
+      it "only allows a unique email address" do
+        copycat = User.new(user_name: "mr_big_cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
+        expect(copycat.valid?).to eq(false)
+      end
+    end
+
   end
 
 end
