@@ -21,16 +21,30 @@ RSpec.describe User, :type => :model do
       expect(user.valid?).to eq(false)
     end
 
-    it "rejects a new user with a short username (under 4 characters)" do
-      user = User.new(user_name: "cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
-      expect(user.valid?).to eq(false)
+    describe "user_name too small:" do
+      before do
+        @user = User.new(user_name: "cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
+      end
+
+      it "rejects a new user with a short username (under 4 characters)" do
+
+        expect(@user.valid?).to eq(false)
+      end
+
+      it "gives a pointed error message" do
+        @user.valid?
+        expect(@user.errors.messages[:user_name]).to eq(["is too short (minimum is 4 characters)"])
+      end
+
     end
 
-    it "rejects a new user with a long username (over 20 characters)" do
-      user = User.new(user_name: "mr_really_big_and_strong_cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
-      expect(user.valid?).to eq(false)
-    end
+    describe "user_name too big" do
 
+      it "rejects a new user with a long username (over 20 characters)" do
+        user = User.new(user_name: "mr_really_big_and_strong_cat", email: "puss@boots.com", password:"catsrule&dogsdrool")
+        expect(user.valid?).to eq(false)
+      end
+    end
   end
 
 end
