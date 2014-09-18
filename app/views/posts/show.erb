@@ -2,7 +2,13 @@
   <%=@post.id%><br/>
   <%=@post.content%><br/>
   <%=@post.user.user_name%><br/>
-  <%=@post.comments%><br/>
 
+  <%@post.comments.each do |comment| %>
+    <br/>
+    <%=comment.content%> <br/>
+    Comment posted by <%=comment.user.user_name%>
+    <%= comment.created_at.strftime("at %H:%M%p on %D") %>
+    <br/>
+  <%end%>
 
 </div>

@@ -10,7 +10,9 @@
 
 <%= yield %>
 <% if user_signed_in? %>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+  <div class="logout-button">
+    <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+  </div>
 <%end%>
 </body>
 </html>

@@ -10,5 +10,5 @@ end
 end
 
 30.times do
-  Comment.create!(content: Faker::Lorem.paragraph(3), user_id: rand(User.count), post_id: rand(Post.count)+1 )
+  Comment.create!(content: Faker::Lorem.paragraph(3), user_id: rand(User.count)+1, post_id: rand(Post.count)+1 )
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [] do
-    resources :posts
+    resources :posts, controller: "user_posts"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
