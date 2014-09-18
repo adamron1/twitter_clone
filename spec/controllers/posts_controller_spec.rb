@@ -34,10 +34,17 @@ RSpec.describe PostsController, :type => :controller do
 
   describe "POST #create" do
 
-    it "creates a new post object" do
-      expect{
+    context 'with valid attributes' do
+      it "creates a new post object" do
+        expect{
+          post :create, post: FactoryGirl.attributes_for(:post)
+        }.to change(Post,:count).by(1)
+      end
+
+      it "redirects to the new post's view" do
         post :create, post: FactoryGirl.attributes_for(:post)
-      }.to change(Post,:count).by(1)
+        expect(response).to redirect_to(Post.last)
+      end
     end
 
   end
@@ -56,8 +63,13 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
-  describe "#edit" do
-    pending
+  describe "GET #edit" do
+
+    it "gets the correct Post object" do
+      get :edit, id: @test
+      expect(assigns(:post)).to eq(@test)
+    end
+
   end
 
 end
