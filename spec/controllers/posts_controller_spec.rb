@@ -76,4 +76,17 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
+  describe "PUT #update" do
+    it "updates a Post object" do
+      post :update, id: @test, post: {content: "EDITED"}
+      @test.reload
+      expect(@test.content).to eq('EDITED')
+    end
+
+    it "redirects to the Post object show view" do
+      post :update, id: @test, post: {content: "EDITED"}
+      expect(response).to redirect_to(:post)
+    end
+  end
+
 end

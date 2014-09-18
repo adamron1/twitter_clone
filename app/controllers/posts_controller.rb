@@ -1,32 +1,39 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:edit, :destroy, :show, :update]
+
   def index
     @posts = Post.all
   end
 
   def show
-    find_post
   end
 
   def create
-    new_post = Post.create(content: params[:content], user_id: params[:user_id])
-    @post = Post.find(new_post[:id])
-    redirect_to(Post.last)
+    new_post = Post.create(post_params)
+    redirect_to(new_post)
   end
 
   def edit
-    find_post
+  end
+
+  def update
+    @post.update(post_params)
+    redirect_to(@post)
   end
 
   def destroy
-    find_post
     @post.destroy
-    redirect_to(posts_path)
+    redirect_to(posts_url)
   end
 
   private
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:user_id, :content)
   end
 
 end
