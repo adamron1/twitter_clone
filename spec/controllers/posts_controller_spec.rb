@@ -39,7 +39,14 @@ RSpec.describe PostsController, :type => :controller do
   describe "DELETE #destroy" do
 
     it "annihilates an unsuspecting post" do
-      pending
+      expect{
+        delete :destroy, id: @test
+      }.to change(Post,:count).by(-1)
+    end
+
+    it "redirects to posts index" do
+      delete :destroy, id: @test
+      expect(response).to redirect_to posts_path
     end
   end
 

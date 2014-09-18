@@ -8,7 +8,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(content: params[:content])
+    new_post = Post.create(content: params[:content])
+    @post = Post.find(new_post[:id])
+    redirect_to(Post.last)
   end
 
   def edit
@@ -18,6 +20,7 @@ class PostsController < ApplicationController
   def destroy
     find_post
     @post.destroy
+    redirect_to(posts_path)
   end
 
   private
