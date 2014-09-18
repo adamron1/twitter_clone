@@ -19,8 +19,14 @@ RSpec.describe PostsController, :type => :controller do
   end
 
   describe "GET #show" do
+
+    it "assigns the requested post to @post" do
+      get :show, id: @test
+      expect(assigns(:post)).to eq(@test)
+    end
+
     it "redirects to a show template" do
-      get :show
+      get :show, id: @test
       expect(response).to render_template("show")
     end
 

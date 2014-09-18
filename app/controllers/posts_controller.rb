@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    new_post = Post.create(content: params[:content])
+    new_post = Post.create(content: params[:content], user_id: params[:user_id])
     @post = Post.find(new_post[:id])
     redirect_to(Post.last)
   end
