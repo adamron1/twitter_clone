@@ -38,10 +38,10 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
-  gem 'database_cleaner', '~> 1.3.0'
-  gem 'capybara', '~> 2.4.1'
-  gem 'factory_girl'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 gem 'devise'
