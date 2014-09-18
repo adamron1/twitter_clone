@@ -70,6 +70,10 @@ RSpec.describe PostsController, :type => :controller do
       expect(assigns(:post)).to eq(@test)
     end
 
+    it "renders a an Edit view for the Post object" do
+      get :edit, id: @test
+      expect(response).to render_template("edit")
+    end
   end
 
 end
