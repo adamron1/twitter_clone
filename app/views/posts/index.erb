@@ -3,6 +3,7 @@
     <h3>
       <%= link_to "Share your terrible, trivial musings", new_post_path %>
     </h3>
+    <%= render 'form' %>
   <%else%>
     <h3>
       <%= link_to "Sign up to post your own pointless thoughts", new_user_session_url %>
@@ -16,11 +17,17 @@
     <div class="post" id="post-<%=post.id%>">
       <%= post.content %>
       <br/>
+      (<%=post.comments.count%> comments)
+      <br/>
       <p>Posted by
         <%= link_to post.user.user_name, user_posts_path(post.user) %> <%= post.created_at.strftime("at %H:%M on %d/%m/%Y") %>
       </p>
 
       <p><%= link_to "More", post %> </p>
+
+      <% if post.user.id == current_user.id %>
+        <%= button_to "Delete", post, method: :delete %>
+      <% end %>
 
 
     </div>

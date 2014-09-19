@@ -2,20 +2,28 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :destroy, :show, :update]
 
   def index
-    if params[:user_id]
-      user = User.find(params[:user_id])
-      @posts = user.posts
-    else
-      @posts = Post.all
-    end
+    @post = Post.new if user_signed_in?
+    @posts = Post.all
+    @posts = @posts.sort_by {|post| post.created_at}.reverse
+    # if params[:user_id]
+
+      # user = User.find(params[:user_id])
+      # @posts = user.posts
+    # else
+      # @posts = Post.all
+    # end
   end
 
   def show
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
     new_post = Post.create(post_params)
-    redirect_to(new_post)
+    redirect_to(posts_url)
   end
 
   def edit

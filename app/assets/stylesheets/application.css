@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #f3fcfd
+}
+
 .logout-button {
   position: absolute;
   top:10px;
